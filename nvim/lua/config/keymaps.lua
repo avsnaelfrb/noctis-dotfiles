@@ -9,6 +9,10 @@
 -- --------------------------------------------------------------------------
 vim.keymap.set({ "n", "v" }, "<leader>", "<nop>", { desc = "Disable leader key default" })
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
+-- Undo/redo gaya VSCode, bisa dipakai juga dari insert mode.
+-- (Overrides default <C-z> = suspend di normal mode.)
+vim.keymap.set({ "n", "i" }, "<C-z>", "<cmd>undo<cr>", { desc = "Undo" })
+vim.keymap.set({ "n", "i" }, "<C-S-z>", "<cmd>redo<cr>", { desc = "Redo" })
 vim.keymap.set("n", "<leader>re", ":restart<CR>", { silent = true, desc = "Restart Neovim" })
 
 -- --------------------------------------------------------------------------
@@ -30,6 +34,8 @@ vim.keymap.set("n", "<S-l>", ":bnext<CR>", { silent = true, desc = "Next buffer"
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { silent = true, desc = "Previous buffer" })
 vim.keymap.set("n", "<C-c>", ":bwipeout<CR>", { silent = true, desc = "Close current buffer" })
 vim.keymap.set("n", "<leader>w", ":w<cr>", { silent = true, noremap = true, desc = "Save current file" })
+-- Simpan tanpa harus keluar dari insert mode
+vim.keymap.set("i", "<C-s>", "<cmd>write<cr>", { desc = "Save file (insert mode)" })
 vim.keymap.set({ "n", "t" }, "<leader>q", ":q<cr>", { silent = true, noremap = true, desc = "Quit current buffer" })
 
 -- --------------------------------------------------------------------------
@@ -49,6 +55,8 @@ vim.keymap.set("n", "<S-k>", "<C-u>zz", { desc = "Scroll up and center" })
 vim.keymap.set("n", "<S-j>", "<C-d>zz", { desc = "Scroll down and center" })
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result centered" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result centered" })
+-- Ke akhir baris (gaya Emacs/readline), bisa dari normal maupun insert mode.
+vim.keymap.set({ "n", "i" }, "<C-e>", "<End>", { desc = "Go to end of line" })
 
 -- --------------------------------------------------------------------------
 -- Menggeser baris (visual mode)
@@ -56,6 +64,20 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result centered" })
 -- --------------------------------------------------------------------------
 vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selection down" })
 vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
+
+-- --------------------------------------------------------------------------
+-- Duplikasi & pindah baris (gaya VSCode)
+-- Shift+Alt+↑/↓ = duplikat, Alt+↑/↓ = pindah (berlaku untuk baris maupun selection).
+-- --------------------------------------------------------------------------
+vim.keymap.set("n", "<A-S-Down>", ":t.<CR>", { silent = true, desc = "Duplicate line down" })
+vim.keymap.set("n", "<A-S-Up>", ":t-1<CR>", { silent = true, desc = "Duplicate line up" })
+vim.keymap.set("v", "<A-S-Down>", "y`>p", { silent = true, desc = "Duplicate selection down" })
+vim.keymap.set("v", "<A-S-Up>", "y`<P", { silent = true, desc = "Duplicate selection up" })
+
+vim.keymap.set("n", "<A-Down>", ":m .+1<CR>==", { silent = true, desc = "Move line down" })
+vim.keymap.set("n", "<A-Up>", ":m .-2<CR>==", { silent = true, desc = "Move line up" })
+vim.keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selection down" })
+vim.keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
 
 -- --------------------------------------------------------------------------
 -- Membersihkan tampilan
