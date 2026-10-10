@@ -1,7 +1,35 @@
 onboarding = false
 [theme]
+# Tema "catppuccin-mocha" kustom, dibangun dari
+# ~/Documents/colorpallet/catppuccin-mocha.toml
 name = "catppuccin"
 auto_switch = false
+
+[theme.custom]
+# background / foreground
+panel_bg = "#181825"
+sidebar_bg = "#181825"
+text = "#cdd6f4"
+subtext0 = "#a6adc8"
+
+# surfaces
+surface0 = "#313244"
+surface1 = "#45475a"
+surface_dim = "#1e1e2e"
+overlay0 = "#6c7086"
+overlay1 = "#7f849c"
+active_row_bg = "#313244"
+selection_bg = "#45475a"
+
+# aksen warna
+accent = "#89b4fa"
+blue = "#89b4fa"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+red = "#f38ba8"
+mauve = "#cba6f7"
+teal = "#94e2d5"
+peach = "#fab387"
 
 [keys]
 prefix = "ctrl+;"
@@ -17,6 +45,7 @@ sidebar_max_width = 20
 pane_borders = "always"
 pane_outer_borders = true
 status_indicators = "symbols"
+sidebar_collapsed_mode = "hidden"
 
 [terminal]
 kitty_graphics = true
