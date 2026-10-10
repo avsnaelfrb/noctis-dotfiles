@@ -5,6 +5,7 @@ require("lazy").setup({
 	require("plugins.oil"),
 	require("plugins.neo-tree"),
 	require("plugins.treesitter"),
+	require("plugins.snacks"),
 	require("plugins.mini"),
 	require("plugins.diffview"),
 	require("plugins.lualine"),
