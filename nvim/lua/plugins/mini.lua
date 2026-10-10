@@ -8,17 +8,24 @@ return {
 		require("mini.icons").setup()
 		require("mini.jump").setup()
 		require("mini.diff").setup({
-			signs = {
-				add = "▎",
-				change = "▎",
-				delete = "",
-				top = "",
-				bottom = "",
-				middle = "",
+			view = {
+				-- Tampilkan marker di sign column (default: number column kalau nomor baris aktif)
+				style = "sign",
+				signs = {
+					add = "+",
+					change = "~",
+					delete = "-",
+					top = "",
+					bottom = "",
+					middle = "",
+				},
 			},
 		})
+
 		require("mini.splitjoin").setup({ mappings = { toggle = "<leader>m" } })
-		require("mini.hipatterns").setup({ highlighters = { hex_color = require("mini.hipatterns").gen_highlighter.hex_color() } })
+		require("mini.hipatterns").setup({
+			highlighters = { hex_color = require("mini.hipatterns").gen_highlighter.hex_color() },
+		})
 		require("plugins.mini.completions")
 		require("plugins.mini.notify")
 		require("plugins.mini.picker")

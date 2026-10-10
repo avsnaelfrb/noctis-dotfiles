@@ -6,7 +6,7 @@ require("lazy").setup({
 	require("plugins.neo-tree"),
 	require("plugins.treesitter"),
 	require("plugins.mini"),
-	require("plugins.zdiff"),
+	require("plugins.diffview"),
 	require("plugins.lualine"),
 	require("plugins.indent_blankline"),
 	"rafamadriz/friendly-snippets",

@@ -2,6 +2,7 @@
   "SchemaStore.nvim": { "branch": "main", "commit": "b463a5e79f84fd9ca22dd47f41754387d8fe7af4" },
   "catppuccin": { "branch": "main", "commit": "edefef779ab08ce1a4a404713e3012b0d202bd35" },
   "conform.nvim": { "branch": "master", "commit": "016802de402556da54c36bd7359b441266b01cdd" },
+  "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "friendly-snippets": { "branch": "main", "commit": "b4d01b0fdf3c9a549961c2f9ffe8dc09be166219" },
   "indent-blankline.nvim": { "branch": "master", "commit": "f1e186e44d3b7f9ae918008e2c28ce37c6023d2d" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
@@ -17,6 +18,5 @@
   "oil-git-status.nvim": { "branch": "main", "commit": "a3e2ccb00cb8822115e28a9a1791eda051d940c9" },
   "oil.nvim": { "branch": "master", "commit": "b73018b75affd13fa38e2fc94ef753b465f770d7" },
   "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
-  "tiny-cmdline.nvim": { "branch": "main", "commit": "d83700b48d8ff5625dbef4029af071db559544e5" },
-  "zdiff.nvim": { "branch": "main", "commit": "6e2a105d7cc138b25e2907589ad2c5251e608424" }
+  "tiny-cmdline.nvim": { "branch": "main", "commit": "d83700b48d8ff5625dbef4029af071db559544e5" }
 }
