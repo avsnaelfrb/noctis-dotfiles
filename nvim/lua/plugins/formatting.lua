@@ -31,6 +31,8 @@ return {
 			format_on_save = { timeout_ms = 8000, lsp_format = "fallback" },
 			formatters_by_ft = {
 				lua = { "stylua" },
+				-- Ruff: urutkan import dulu, baru format.
+				python = { "ruff_organize_imports", "ruff_format" },
 				javascript = javascript,
 				javascriptreact = javascript,
 				typescript = eslint,
@@ -46,5 +48,10 @@ return {
 				sql_formatter = { prepend_args = { "--language", "postgresql" } },
 			},
 		})
+
+		-- Format manual kapan saja (sama seperti format saat save).
+		vim.keymap.set("n", "<leader>f", function()
+			require("conform").format({ async = true, lsp_format = "fallback" })
+		end, { desc = "Format buffer" })
 	end,
 }
