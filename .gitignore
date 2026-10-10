@@ -1,0 +1,59 @@
+# =====================================================================
+#  .gitignore  -  dotfiles monorepo (~/.config)
+#  Pola WHITELIST: abaikan SEMUA, kecuali folder yang didaftarkan di
+#  bawah. Folder baru yang muncul di ~/.config otomatis TIDAK ke-push.
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# 1) Abaikan semua entri di root ~/.config ...
+# ---------------------------------------------------------------------
+/*
+
+# ---------------------------------------------------------------------
+# 2) ... kecuali folder config yang mau di-backup (isi ikut otomatis)
+# ---------------------------------------------------------------------
+!alacritty/
+!kitty/
+!nvim/
+!fish/
+!ghostty/
+!herdr/
+!micro/
+
+# File meta repo tetap disimpan
+!.gitignore
+!README.md
+!install.sh
+
+# ---------------------------------------------------------------------
+# 3) Jangan commit file runtime/state di dalam folder yang di-whitelist
+# ---------------------------------------------------------------------
+
+# Log & socket (herdr, nvim, dll.)
+*.log
+*.sock
+*.sock.*
+
+# herdr: hanya config.toml yang disimpan, sisanya state runtime
+/herdr/.plugins.lock
+/herdr/session.json
+/herdr/release-notes.json
+/herdr/session-snapshots/
+
+# micro: hanya config & tema, bukan syntax bawaan/sesi/backup editor
+/micro/syntax/
+/micro/backups/
+/micro/buffers/
+
+# ---------------------------------------------------------------------
+# 4) Backup / file sementara editor
+# ---------------------------------------------------------------------
+*~
+*.swp
+*.swo
+*.orig
+*.bak
+*.backup.*
+*.tmp
+.DS_Store
+Thumbs.db

@@ -1,0 +1,26 @@
+return {
+	"echasnovski/mini.nvim",
+	event = "VeryLazy",
+	config = function()
+		require("mini.ai").setup()
+		require("mini.align").setup()
+		require("mini.surround").setup()
+		require("mini.icons").setup()
+		require("mini.jump").setup()
+		require("mini.diff").setup({
+			signs = {
+				add = "▎",
+				change = "▎",
+				delete = "",
+				top = "",
+				bottom = "",
+				middle = "",
+			},
+		})
+		require("mini.splitjoin").setup({ mappings = { toggle = "<leader>m" } })
+		require("mini.hipatterns").setup({ highlighters = { hex_color = require("mini.hipatterns").gen_highlighter.hex_color() } })
+		require("plugins.mini.completions")
+		require("plugins.mini.notify")
+		require("plugins.mini.picker")
+	end,
+}

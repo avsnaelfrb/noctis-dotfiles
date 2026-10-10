@@ -1,0 +1,103 @@
+# Ayu Dark Colorscheme for Micro Editor
+# Based on the Ayu Dark color palette
+# https://github.com/dempfi/ayu
+#
+# Installation:
+#   1. Copy this file to ~/.config/micro/colorschemes/
+#   2. In micro, press Ctrl+E and type: set colorscheme ayu-dark
+#
+# ═══════════════════════════════════════════════════════════════════
+
+# ungu = D2A6FF
+# peach = E6C08A
+# putih (teks) = BFBDB6
+# bg-black = 10141C
+# bg-black-base = 0D1017
+# biru = 59C2FF
+# orange = FF8F40
+# orange-kunig = FFB454
+
+# ── Core Syntax Highlighting ──────────────────────────────────────
+
+color-link default              "#BFBDB6"
+color-link comment              "#5A6378"
+
+color-link identifier           "#59C2FF"
+color-link identifier.var       "#FF8F40"
+color-link identifier.class     "#59C2FF"
+
+color-link constant             "#D2A6FF"
+color-link constant.string      "#AAD94C"
+color-link constant.string.char "#95E6CB"
+color-link constant.number      "#D2A6FF"
+
+color-link statement            "#FF8F40"
+
+color-link preproc              "#39BAE6"
+
+color-link type                 "#59C2FF"
+color-link type.keyword         "#59C2FF"
+
+color-link special              "#E6C08A"
+
+color-link symbol               "#F29668"
+
+color-link underlined           "#F07178"
+
+color-link error                "bold #D95757"
+
+color-link todo                 "bold #E6B450"
+
+color-link ignore               "#4D5566"
+
+# ── Selection & Cursor ────────────────────────────────────────────
+
+color-link selection            "#BFBDB6,#1A3A5C"
+color-link cursor-line          "#0D1017"
+color-link color-column         "#0D1017"
+
+# ── Line Numbers ──────────────────────────────────────────────────
+
+color-link line-number          "#5A6378"
+color-link current-line-number  "#FFB454"
+
+# ── Status Line ───────────────────────────────────────────────────
+
+color-link statusline                    "bold #0D1017,#FF8F40"
+color-link statusline.inactive           "#4D5566,#0D1017"
+color-link statusline.suggestions        "#FF8F40,#0D1017"
+
+# ── Tab Bar ───────────────────────────────────────────────────────
+
+color-link tabbar               "#4D5566,#0A0E14"
+color-link tabbar.active        "#FFB454,#0D1017"
+
+# ── Search & Bracket Matching ─────────────────────────────────────
+
+color-link hlsearch             "#10141C,#E6B450"
+color-link match-brace          "#10141C,#D2A6FF"
+
+# ── Diff / Gutter ─────────────────────────────────────────────────
+
+color-link diff-added           "#7BC062"
+color-link diff-modified        "#73B8FF"
+color-link diff-deleted         "#F26D78"
+color-link gutter-error         "#D95757"
+color-link gutter-warning       "#E6B450"
+color-link gutter-info          "#39BAE6"
+
+# ── UI Elements ───────────────────────────────────────────────────
+
+color-link indent-char          "#FF8F40"
+color-link scrollbar            "#FF8F40"
+color-link divider              "#FF8F40"
+
+# ── Error Highlighting ────────────────────────────────────────────
+
+color-link tab-error            "#D95757"
+color-link trailingws           "#D95757"
+
+# ── Messages ──────────────────────────────────────────────────────
+
+color-link message              "#BFBDB6"
+color-link error-message        "bold #D95757"
