@@ -1,6 +1,6 @@
 # noctis-dotfiles
 
-This is my personal Linux setup, kept in one repo as a mono-repo inside `~/.config`.
+This is my personal Terminal setup, kept in one repo as a mono-repo inside `~/.config`.
 Feel free to clone it, poke around, and take whatever's useful.
 
 Only 7 folders are tracked here — everything else is filtered out by a whitelist-style
