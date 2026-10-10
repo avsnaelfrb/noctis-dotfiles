@@ -18,7 +18,9 @@ return {
 
 		require("lualine").setup({
 			options = {
-				theme = "catppuccin",
+				-- Tema lualine dari catppuccin dinamai per-flavour
+				-- (`catppuccin-mocha`), bukan `catppuccin`.
+				theme = "catppuccin-mocha",
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
 			},
