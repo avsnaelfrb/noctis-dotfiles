@@ -4,7 +4,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 	desc = "highlight selection on yank",
 	callback = function()
-		vim.hl.hl_op({ timeout = 200, on_visual = true })
+		-- hl_op() baru tersedia di Neovim >= 0.13; on_yank() untuk versi lama.
+		local hl_op = vim.hl.hl_op or vim.hl.on_yank
+		hl_op({ timeout = 200, on_visual = true })
 	end,
 })
 
