@@ -28,12 +28,16 @@ local shorten_path = function(path)
 	}, "/")
 end
 
--- Show files with shortened paths
+-- Tampilkan hanya nama file, dan kosongkan list sebelum ada query
 local show_files = function(buf_id, items, query, opts)
+	if #query == 0 then
+		return MiniPick.default_show(buf_id, {}, query, opts)
+	end
+
 	items = vim.tbl_map(function(path)
 		return {
 			path = path,
-			text = shorten_path(path),
+			text = vim.fn.fnamemodify(path, ":t"),
 		}
 	end, items)
 
@@ -66,10 +70,12 @@ require("mini.pick").setup({
 
 require("mini.extra").setup()
 
--- Find files
+-- Find files: semua file di dalam cwd Neovim (rekursif)
 vim.keymap.set("n", "<leader>sf", function()
+	local cwd = vim.fn.getcwd()
+
 	MiniPick.builtin.files({ tool = "rg" }, {
-		source = { show = show_files },
+		source = { cwd = cwd, name = "Files", show = show_files },
 	})
 end, { silent = true })
 
