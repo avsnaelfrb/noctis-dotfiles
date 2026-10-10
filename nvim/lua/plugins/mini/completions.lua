@@ -22,7 +22,9 @@ snippets.setup({
 		end,
 	},
 	mappings = {
-		expand = "<C-s>",
+		-- <C-s> dipindah ke save, jadi snippet expand pakai <C-l>
+		-- (saat sesi snippet aktif, <C-l> otomatis jadi "lompat tabstop berikutnya").
+		expand = "<C-l>",
 	},
 })
 
