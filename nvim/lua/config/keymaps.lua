@@ -80,6 +80,14 @@ vim.keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Mov
 vim.keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
 
 -- --------------------------------------------------------------------------
+-- Hapus baris
+-- <C-S-k> hapus satu baris penuh, berlaku di normal maupun insert mode.
+-- (Insert pakai <C-o> supaya tetap berada di insert mode setelah dihapus.)
+-- --------------------------------------------------------------------------
+vim.keymap.set("n", "<C-S-k>", "dd", { desc = "Delete line" })
+vim.keymap.set("i", "<C-S-k>", "<C-o>dd", { desc = "Delete line" })
+
+-- --------------------------------------------------------------------------
 -- Membersihkan tampilan
 -- Esc menghapus highlight pencarian dan semua penanda multicursor.
 -- --------------------------------------------------------------------------
