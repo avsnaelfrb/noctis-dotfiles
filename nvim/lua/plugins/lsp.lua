@@ -1,6 +1,7 @@
 local servers = {
 	"lua_ls",
 	"basedpyright",
+	"ruff",
 	"ts_ls",
 	"vue_ls",
 	"jsonls",
