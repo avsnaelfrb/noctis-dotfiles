@@ -39,6 +39,18 @@ require("mini.completion").setup({
 	},
 })
 
+-- mini.completion memasang `completefunc` ke semua buffer lewat autocmd
+-- `BufEnter`, termasuk ke buffer input picker. Akibatnya muncul popup
+-- completion di picker yang tidak bisa dipakai. Tandai buffer picker
+-- sebagai "disabled" (mini.completion menghormati flag ini di semua
+-- autocmd auto-completion-nya).
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "snacks_picker_input",
+	callback = function()
+		vim.b.minicompletion_disable = true
+	end,
+})
+
 require("mini.cmdline").setup({})
 
 local function accept_completion(fallback)
