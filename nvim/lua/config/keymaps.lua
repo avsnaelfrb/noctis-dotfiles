@@ -57,6 +57,13 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result centered" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result centered" })
 -- Ke akhir baris (gaya Emacs/readline), bisa dari normal maupun insert mode.
 vim.keymap.set({ "n", "i" }, "<C-e>", "<End>", { desc = "Go to end of line" })
+-- Ke huruf pertama di awal baris (gaya Emacs/readline). Insert pakai <C-o>
+-- karena tak ada key insert bawaan untuk "first non-blank".
+vim.keymap.set("n", "<C-a>", "^", { desc = "Go to first character of line" })
+vim.keymap.set("i", "<C-a>", "<C-o>^", { desc = "Go to first character of line" })
+-- Pilih seluruh buffer (gaya VSCode Ctrl+A). <Esc> dulu supaya aman
+-- dipanggil dari visual mode (kalau tidak, `V` malah membatalkan seleksi).
+vim.keymap.set({ "n", "v" }, "<leader>a", "<Esc>ggVG", { silent = true, desc = "Select all" })
 
 -- --------------------------------------------------------------------------
 -- Menggeser baris (visual mode)
@@ -78,6 +85,14 @@ vim.keymap.set("n", "<A-Down>", ":m .+1<CR>==", { silent = true, desc = "Move li
 vim.keymap.set("n", "<A-Up>", ":m .-2<CR>==", { silent = true, desc = "Move line up" })
 vim.keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selection down" })
 vim.keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
+
+-- Varian insert: tanpa ini Alt+Panah dipecah nvim jadi <Esc>+Panah,
+-- sehingga buang ke normal mode dan cuma scroll kursor. <C-o> jalankan
+-- satu perintah normal lalu balik ke insert.
+vim.keymap.set("i", "<A-S-Down>", "<C-o>:t.<CR>", { silent = true, desc = "Duplicate line down" })
+vim.keymap.set("i", "<A-S-Up>", "<C-o>:t-1<CR>", { silent = true, desc = "Duplicate line up" })
+vim.keymap.set("i", "<A-Down>", "<C-o>:m .+1<CR><C-o>==", { silent = true, desc = "Move line down" })
+vim.keymap.set("i", "<A-Up>", "<C-o>:m .-2<CR><C-o>==", { silent = true, desc = "Move line up" })
 
 -- --------------------------------------------------------------------------
 -- Hapus baris
