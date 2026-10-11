@@ -4,6 +4,7 @@ return {
 	config = function()
 		require("mini.ai").setup()
 		require("mini.align").setup()
+		require("mini.pairs").setup()
 		require("mini.surround").setup()
 		require("mini.jump").setup()
 		require("mini.diff").setup({
