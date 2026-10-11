@@ -1,14 +1,3 @@
--- Sembunyikan list picker selama belum ada query.
--- Dipanggil lewat `filter.transform` yang dijalankan tiap kali pencarian berubah.
-local hide_list_until_query = function(picker, filter)
-	local has_query = vim.trim(filter.pattern or "") ~= ""
-
-	if picker._list_shown ~= has_query then
-		picker._list_shown = has_query
-		picker:toggle("list", { enable = has_query })
-	end
-end
-
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -33,14 +22,11 @@ return {
 	config = function(_, opts)
 		require("snacks").setup(opts)
 
-		-- Find files: hanya di dalam cwd, tampil nama file saja,
-		-- dan list disembunyikan sebelum mulai mengetik
+		-- Find files: hanya di dalam cwd, tampil nama file saja
 		vim.keymap.set("n", "<leader>sf", function()
 			Snacks.picker.files({
 				cwd = vim.fn.getcwd(),
 				formatters = { file = { filename_only = true } },
-				layout = { hidden = { "list" } },
-				filter = { transform = hide_list_until_query },
 			})
 		end, { silent = true, desc = "Find files" })
 
