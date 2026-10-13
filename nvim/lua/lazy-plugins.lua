@@ -9,6 +9,7 @@ require("lazy").setup({
 	require("plugins.mini"),
 	require("plugins.diffview"),
 	require("plugins.lualine"),
+	require("plugins.dashboard"),
 	require("plugins.indent_blankline"),
 	"rafamadriz/friendly-snippets",
 	"rachartier/tiny-cmdline.nvim",
