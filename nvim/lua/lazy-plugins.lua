@@ -8,6 +8,7 @@ require("lazy").setup({
 	require("plugins.snacks"),
 	require("plugins.mini"),
 	require("plugins.diffview"),
+	require("plugins.gitgraph"),
 	require("plugins.lualine"),
 	require("plugins.dashboard"),
 	require("plugins.indent_blankline"),
