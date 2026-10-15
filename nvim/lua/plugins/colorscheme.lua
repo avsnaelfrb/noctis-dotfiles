@@ -10,7 +10,7 @@ return {
 			float = { transparent = false },
 			no_bold = true,
 			no_italic = true,
-			auto_integrations = false,
+			auto_integrations = true,
 			custom_highlights = function(colors)
 				return {
 					CursorLine = { bg = colors.surface0 },
