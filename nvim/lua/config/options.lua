@@ -12,6 +12,9 @@ vim.o.undofile = true -- persistant undo history
 vim.o.number = true -- enable line numbers
 vim.o.relativenumber = true -- enable relative line numbers
 
+vim.o.list = true -- tampilkan karakter tak terlihat
+vim.opt.listchars = { space = "·", trail = "·", nbsp = "␣", tab = "▸ " }
+
 vim.o.pumheight = 10 -- max height of completion menu
 vim.o.winborder = "rounded" -- rounded border
 vim.o.showmode = false -- disable showing mode below statusline
