@@ -32,10 +32,12 @@ vim.keymap.set("n", "<leader>v", ":vsplit<CR>", { silent = true, desc = "Vertica
 -- --------------------------------------------------------------------------
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", { silent = true, desc = "Next buffer" })
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { silent = true, desc = "Previous buffer" })
--- Ganti buffer dari dalam terminal mode pakai Ctrl (huruf H/L tetap sampai ke shell).
--- <C-\><C-n> keluar dulu dari terminal mode, baru jalankan perintah buffer.
-vim.keymap.set("t", "<C-h>", "<C-\\><C-n>:bprevious<CR>", { silent = true, desc = "Previous buffer (terminal)" })
-vim.keymap.set("t", "<C-l>", "<C-\\><C-n>:bnext<CR>", { silent = true, desc = "Next buffer (terminal)" })
+-- Navigasi split dari dalam terminal mode pakai Ctrl.
+-- <C-\><C-n> keluar dulu dari terminal mode, baru pindah fokus ke split.
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n>:wincmd h<CR>", { silent = true, desc = "Move to left split (terminal)" })
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n>:wincmd j<CR>", { silent = true, desc = "Move to below split (terminal)" })
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n>:wincmd k<CR>", { silent = true, desc = "Move to above split (terminal)" })
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n>:wincmd l<CR>", { silent = true, desc = "Move to right split (terminal)" })
 vim.keymap.set("n", "<C-c>", ":bwipeout<CR>", { silent = true, desc = "Close current buffer" })
 vim.keymap.set("n", "<leader>w", ":w<cr>", { silent = true, noremap = true, desc = "Save current file" })
 -- Simpan tanpa harus keluar dari insert mode
