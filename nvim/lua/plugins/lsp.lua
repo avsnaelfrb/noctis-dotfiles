@@ -7,6 +7,7 @@ local servers = {
 	"jsonls",
 	"yamlls",
 	"just",
+	"rust_analyzer",
 }
 
 return {
@@ -62,6 +63,59 @@ return {
 			})
 
 			vim.lsp.enable(servers)
+
+			-- Rust: rustfmt tidak menambah semicolon (bisa mengubah makna tail
+			-- expression), jadi pakai quickfix "add `;`" dari rust-analyzer saat
+			-- menyimpan. Hanya repair yang dilaporkan compiler yang diterapkan.
+			-- shortcut: bergantung teks pesan rust-analyzer "add `;`"; perbarui
+			-- bila pesannya berubah di versi baru.
+			local function rust_fix_semicolon(bufnr)
+				local client = vim.lsp.get_clients({ bufnr = bufnr, method = "textDocument/codeAction" })[1]
+				if not client then
+					return
+				end
+				local diags, targets = {}, {}
+				for _, d in ipairs(vim.diagnostic.get(bufnr)) do
+					local lsp = d.user_data and d.user_data.lsp
+					if lsp then
+						diags[#diags + 1] = lsp
+						if d.message:find("add `;`") then
+							targets[#targets + 1] = lsp.range
+						end
+					end
+				end
+				if #targets == 0 then
+					return
+				end
+				for _, range in ipairs(targets) do
+					local pending = true
+					client:request("textDocument/codeAction", {
+						textDocument = vim.lsp.util.make_text_document_params(bufnr),
+						range = range,
+						context = { diagnostics = diags, only = { "quickfix" } },
+					}, function(err, actions)
+						if not err then
+							for _, a in ipairs(actions or {}) do
+								if a.title:find("add `;`") and a.edit then
+									vim.lsp.util.apply_workspace_edit(a.edit, client.offset_encoding)
+									break
+								end
+							end
+						end
+						pending = false
+					end, bufnr)
+					vim.wait(2000, function()
+						return not pending
+					end)
+				end
+			end
+
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				pattern = "*.rs",
+				callback = function(ev)
+					rust_fix_semicolon(ev.buf)
+				end,
+			})
 
 			local map = vim.keymap.set
 			map("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
