@@ -3,6 +3,10 @@ return {
 	priority = 1000,
 	lazy = false,
 	opts = {
+		terminal = {
+			-- Hilangkan winbar bawaan ("id: term_title") di atas terminal.
+			win = { wo = { winbar = "" } },
+		},
 		picker = {
 			enabled = true,
 		},
@@ -21,6 +25,17 @@ return {
 	},
 	config = function(_, opts)
 		require("snacks").setup(opts)
+
+		-- Terminal (toggle dari normal maupun terminal mode)
+		vim.keymap.set("n", "<c-/>", function()
+			Snacks.terminal()
+		end, { silent = true, desc = "Toggle terminal" })
+		vim.keymap.set("i", "<c-/>", function()
+			Snacks.terminal()
+		end, { silent = true, desc = "Toggle terminal" })
+		vim.keymap.set("t", "<c-/>", function()
+			Snacks.terminal()
+		end, { silent = true, desc = "Toggle terminal" })
 
 		-- Find files: hanya di dalam cwd, tampil nama file saja
 		vim.keymap.set("n", "<leader>sf", function()
