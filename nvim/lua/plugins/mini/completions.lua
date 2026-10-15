@@ -96,10 +96,11 @@ vim.keymap.set("i", "<C-j>", function()
 		return "<C-n>"
 	end
 
-	return "<C-j>"
+	return "<Esc>:wincmd j<CR>"
 end, {
 	expr = true,
-	desc = "Next completion",
+	silent = true,
+	desc = "Next completion or move to below split",
 })
 
 vim.keymap.set("i", "<C-k>", function()
@@ -107,10 +108,11 @@ vim.keymap.set("i", "<C-k>", function()
 		return "<C-p>"
 	end
 
-	return "<C-k>"
+	return "<Esc>:wincmd k<CR>"
 end, {
 	expr = true,
-	desc = "Previous completion",
+	silent = true,
+	desc = "Previous completion or move to above split",
 })
 
 vim.keymap.set("c", "<C-j>", "<C-n>", {
