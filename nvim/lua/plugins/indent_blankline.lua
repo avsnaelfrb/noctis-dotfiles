@@ -4,7 +4,10 @@ return {
 	event = { "BufReadPost", "BufNewFile" },
 	opts = {
 		indent = {
-			char = "│",
+			char = "┊",
+			highlight = "IblIndent",
+		},
+		whitespace = {
 			highlight = "IblIndent",
 		},
 		scope = {
