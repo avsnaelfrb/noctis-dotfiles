@@ -22,8 +22,18 @@ vim.keymap.set("n", "<leader>re", ":restart<CR>", { silent = true, desc = "Resta
 vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { silent = true, desc = "Move to left split" })
 vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { silent = true, desc = "Move to below split" })
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { silent = true, desc = "Move to above split" })
-vim.keymap.set("i", "<C-j>", "<Esc>:wincmd j<CR>", { silent = true, desc = "Move to below split (insert)" })
-vim.keymap.set("i", "<C-k>", "<Esc>:wincmd k<CR>", { silent = true, desc = "Move to above split (insert)" })
+vim.keymap.set("i", "<C-j>", function()
+	if vim.fn.pumvisible() == 1 then
+		return "<C-n>"
+	end
+	return "<Esc>:wincmd j<CR>"
+end, { silent = true, expr = true, desc = "Move to below split (insert)" })
+vim.keymap.set("i", "<C-k>", function()
+	if vim.fn.pumvisible() == 1 then
+		return "<C-p>"
+	end
+	return "<Esc>:wincmd k<CR>"
+end, { silent = true, expr = true, desc = "Move to above split (insert)" })
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { silent = true, desc = "Move to right split" })
 vim.keymap.set("n", "<leader>rr", ":wincmd r<CR>", { silent = true, desc = "Rotate split buffers" })
 vim.keymap.set("n", "<leader>v", ":vsplit<CR>", { silent = true, desc = "Vertical split" })
